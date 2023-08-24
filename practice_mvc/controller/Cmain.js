@@ -1,9 +1,12 @@
 const model = require('../model/Model');
-const {User} = require('../models');
 
 // 메인페이지
 const main = (req,res) => {
     res.render('index');
+};
+// 회원가입페이지
+const signup = (req,res) => {
+    res.render('signup');
 };
 // 로그인페이지
 const signin = (req,res) => {
@@ -18,9 +21,9 @@ const post_signup = (req, res) => {
 };
 // 로그인 
 const post_signin = (req, res) => {
-    model.db_singin(req.body, () => {
+    model.db_singin(req.body, (result) => {
         if (result.length >0) {
-            res,json({result : true, data :result.length });
+            res,json({result : true, data :result[0] });
         } else {
             res.json({result:false})
         }
@@ -42,5 +45,7 @@ const post_signin = (req, res) => {
 module.exports = {
     main : main,
     signup,
-    signin
+    signin,
+    post_signup,
+    post_signin
 }

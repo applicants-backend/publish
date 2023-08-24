@@ -8,11 +8,12 @@ router.get('/', controller.main);
 router.get('/main', controller.main);
 
 router.get('/signin', controller.signin);
+router.get('/signin', controller.post_signin);
 
 router.post('/signup', controller.signup)
+router.post('/signup', controller.post_signup)
 
 // 상세보기
-router.get('/profile/edit', controller.post_profile)
 
 module.exports = router;
 
