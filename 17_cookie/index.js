@@ -1,12 +1,14 @@
 const express = require('express');
-const crypto = require('crypto');
+// const crypto = require('crypto');
 const app = express();
 const PORT = 8000;
-const db = require('./models')
+const db = require('./models');
+const cookieParser = require('cookie-parser');
 
 app.set('view engine', 'ejs');
 app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
+app.use(cookieParser());
 
 //router 분리
 const router = require('./routes/main');
