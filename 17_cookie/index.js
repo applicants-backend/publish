@@ -1,14 +1,26 @@
 const express = require('express');
-// const crypto = require('crypto');
 const app = express();
 const PORT = 8000;
 const db = require('./models');
 const cookieParser = require('cookie-parser');
+const session = require('express-session');
+require('dotenv').config();
 
 app.set('view engine', 'ejs');
 app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
 app.use(cookieParser());
+app.use(session({
+    secret : 'mySession',
+    resvae : false, // 세션 데이터가 변경되지 않더라도 세션을 다시 저장할 지 여부 (default : true).
+    saveUninitialized : false , // 세션 데이터가 초기화 되지 않은 상태에서도 세션을 저장할 지 여부.
+    // 초기화 되지 않는 세션데이터? 세션을 시작한 후 데이터를 저장하지않는 상태
+    cookie : {
+        httpOnly:true,
+        maxAge: 60 * 1000,
+        
+    }
+}));
 
 //router 분리
 const router = require('./routes/main');
@@ -22,9 +34,10 @@ app.use('*', (req, res) => {
 // db sync
 // force : true 는 항상 테이블을 삭제 후 재생성
 // force : false (default) 테이블이 존재하는 패스, 없으면 생성
-db.sequelize.sync({force:true}).then(() => {
-    app.listen(PORT, () => {
-        console.log(`http://localhost:${PORT}`);
-    });
+db.sequelize.sync({
+    force:true}).then(() => {
+        app.listen(PORT, () => {
+            console.log(`http://localhost:${PORT}`);
+        });
 });
 

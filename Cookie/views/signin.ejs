@@ -7,30 +7,31 @@
         <title>Document</title>
     </head>
     <body>
-        <h1>회원가입</h1>
-        <form name="register">
+        <h1>로그인</h1>
+        <form onsubmit="login(event)">
             <input type="text" id="userid" placeholder="ID" /><br />
             <input type="password" id="pw" placeholder="PW" /><br />
-            <input type="text" id="name" placeholder="NAME" /><br />
-            <button type="button" onclick="registerFunc()">회원가입</button>
+            <button type="submit">로그인</button>
         </form>
 
         <script>
-            async function registerFunc() {
-                const form = document.forms['register'];
+            async function login(event) {
+                event.preventDefault(); //기본 제출 멈춤
                 try {
                     const res = await axios({
                         method: 'POST',
-                        url: '/signup',
+                        url: '/signin',
                         data: {
-                            userid: form.userid.value,
-                            pw: form.pw.value,
-                            name: form.name.value,
+                            userid: document.querySelector('#userid').value,
+                            pw: document.querySelector('#pw').value,
                         },
                     });
                     if (res.data.result) {
-                        alert('회원가입을 축하드립니다');
-                        document.location.href = '/';
+                        alert(`${res.data.data.name}님 로그인 성공`);
+                        document.location.href = `/profile/${res.data.data.id}`;
+                    } else {
+                        alert('로그인 실패');
+                        document.location.reload();
                     }
                 } catch (error) {
                     console.log(error);
@@ -39,4 +40,3 @@
         </script>
     </body>
 </html>
-

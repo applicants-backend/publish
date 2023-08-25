@@ -4,23 +4,27 @@ const UserModel = (sequelize) => {
     return sequelize.define('user', {
         id: {
             type: DataTypes.INTEGER,
-            allowNull: false, //NOT NULL
-            primaryKey: true,
-            autoIncrement: true,
+            allowNull: false,
+            autoIncrement : true,
+            primaryKey: true
         },
         userid: {
             type: DataTypes.STRING(20),
-            allowNull: false,
-            defaultBalue : 'asdf'// 기본값
+            allowNull: false
         },
         pw: {
-            type: DataTypes.STRING(20),
-            allowNull: false,
+            type: DataTypes.STRING(255),
+            allowNull: false
+        },
+        salt : {
+            type:DataTypes.STRING(255),
+            allowNull: false
         },
         name: {
-            type: DataTypes.STRING(10),
+            type: DataTypes.STRING(30),
             allowNull: false,
-        },
+            defaultValue : 'name' // 기본값
+        }
     });
 };
 
