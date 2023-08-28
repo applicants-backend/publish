@@ -1,0 +1,23 @@
+{
+  "development": {
+    "username": "minhyun",
+    "password": "aledma010@",
+    "database": "kdt9",
+    "host": "127.0.0.1",
+    "dialect": "mysql"
+  },
+  "test": {
+    "username": "minhyun",
+    "password": "aledma010@",
+    "database": "kdt9",
+    "host": "127.0.0.1",
+    "dialect": "mysql"
+  },
+  "production": {
+    "username": "admin",
+    "password": "aledma010",
+    "database": "kdt9minhyun.cqbhuzuld6wp.ap-northeast-2.rds.amazonaws.com",
+    "host": "127.0.0.1",
+    "dialect": "mysql"
+  }
+}
