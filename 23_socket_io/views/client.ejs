@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="/socket.io/socket.io.js"></script>
+    <title>Document</title>
+</head>
+<body>
+    <div>Socket IO</div>
+    <ul></ul>
+    <form id="chat">
+        <input type="text" id="user" placeholder="user name" />
+        <input type="text" id="message" placeholder="message" /><br/>
+        <button>채팅</button>
+    </form>
+
+    <ul></ul>
+    <form id="vote">
+        <button type="submit" id="hello">hello</button>
+        <button type="submit" id="study">study</button>
+        <button type="submit" id="bye">bye</button>
+    </form>
+
+    <script>
+        const client = 'client'
+        const chatForm = document.querySelector('#chat')
+        const ul = document.querySelector('ul')
+        const socket = io();
+        const voteForm = document.querySelector('#vote')
+
+        // // make event
+        // socket.emit('open_message', {name : 'client', message :'Hello Server'})
+        // socket.on("backend_message", (arg) => {
+        //     const li = document.createElement('li');
+        //     li.textContent = `${arg.name} : ${arg.message}`
+        //     ul.appendChild(li);
+        // });
+        // // form event
+        // chatForm.addEventListener('submit', (e) => {
+        //     e.preventDefault();
+        //     const user = chatForm.querySelector('#user');
+        //     const message = chatForm.querySelector('#message');
+        //     socket.emit('form_message', {name : user.value, message: message.value})
+        // });
+
+        // make event 2
+        socket.on("vote_message", (arg) => {
+            const li = document.createElement('li');
+            li.textContent = `${arg.name} : ${arg.message}`
+            ul.appendChild(li);
+        });
+
+        // form event 2
+        voteForm.addEventListener('submit', (e) => {
+            e.preventDefault();
+            const hello = voteForm.querySelector('#hello')
+            const study = voteForm.querySelector('#study')
+            const bye = voteForm.querySelector('#bye')
+            socket.emit('vote_message', {name : client , message : hello.value})
+            socket.emit('vote_message', {name : client , message : study.value})
+            socket.emit('vote_message', {name : client , message : bye.value})
+        })
+
+
+    </script>
+</body>
+</html>
