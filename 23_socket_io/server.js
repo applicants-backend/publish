@@ -80,7 +80,12 @@ io.on('connection', (socket) => {
     });
     socket.on('message', (res) => {
         // io.to(특정아이디).emit(이벤트) 특정방의 전체 사용자에게 메세지.
-        io.to(socket.room).emit('chat', res)
+        io.to(socket.room).emit('send', res)
+    });
+
+    socket.on('receive', (res) => {
+        // io.to(특정아이디).emit(이벤트) 특정방의 전체 사용자에게 메세지.
+        io.to(socket.room).emit('receive', res)
     });
 
     socket.on('leave', () => {

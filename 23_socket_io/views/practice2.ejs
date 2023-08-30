@@ -7,13 +7,13 @@
     <title>Document</title>
 </head>
 <body>
-    <ul></ul>
-    <form id="chat">
-        <input type="text" id="message" placeholder="message" /><br/>
-        <button>Send</button>
-        <button type="click" onclick="leave()">Leave</button>
-    </form>
-
+        <ul style="background-color: aqua; width: 500px; height: 500px;"></ul>
+        <form id="chat">
+            <input type="text" id="message" placeholder="message" /><br/>
+            <button>Send</button>
+            <button type="click" onclick="leave()">Leave</button>
+        </form>
+    
     <script>
         const chatForm = document.querySelector('#chat');
         const ul = document.querySelector('ul');
@@ -28,13 +28,24 @@
         socket.on('create', (res) => {
             const li = document.createElement('li')
             li.textContent = res;
+            li.style.textAlign = "center";
             ul.appendChild(li);
         });
-        socket.on('chat', (res) => {
+
+        // chat room setting
+        socket.on('send', (res) => {
             const li = document.createElement('li')
             li.textContent = res;
+            li.style.textAlign = "right"
             ul.appendChild(li);
         });
+
+        socket.on('receive', (res) => {
+            const li = document.createElement('li')
+            li.textContent = res;
+            li.style.textAlign = "left"
+            ul.appendChild(li);
+        })
 
         // form event
         chatForm.addEventListener('submit', (e) => {
@@ -47,6 +58,7 @@
         function leave() {
             console.log('leave')
             socket.emit('leave')
+            const li = document.createElement('li')
         };
 
     </script>
