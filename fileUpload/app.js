@@ -33,18 +33,18 @@ app.use('/uploads', express.static(__dirname + '/uploads'));
 
 
 // aws 설정
-aws.config.update({
-    accessKeyId : 'AKIA5EK2XZJUKDDHOFPV',
-    secretAccessKey : "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",
-    region: 'ap-northeast-2'
-})
+// aws.config.update({
+//     accessKeyId : 'AKIA5EK2XZJUKDDHOFPV',
+//     secretAccessKey : "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",
+//     region: 'ap-northeast-2'
+// })
 // aws s3 인스턴스 생성
 const s3 = new aws.S3();
 // multer 설정 - aws
 const upload = multer({
     storage : multerS3({
         s3: s3, // s3 인스턴스
-        bucket : 'kdt9minhyun-bucket', // 버킷 name
+        bucket : 'kdt9hotdog-bucket', // 버킷 name
         acl : 'public-read', // 파일 접근권한 (public-read로 해야 업로드 파일 공개)
         metadata : function(req,file, cb) {
             cb(null, {fieldname : file.fieldname});
