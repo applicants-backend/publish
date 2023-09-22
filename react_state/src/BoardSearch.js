@@ -7,12 +7,17 @@ class BoardAns extends Component {
 
     // 초기화해주는 작업
     this.state = {
-      inputWriter: "",
-      inputTitle: "",
-      comments: [],
+      inputWriter: "", // 작성자
+      inputTitle: "", // 제목
+      comments: [], // 내용
+
+      inputSearch: "", // 검색내용
+      searchType: "",
+      result: [],
     };
     this.onChange = this.onChange.bind(this);
     this.addComment = this.addComment.bind(this);
+    this.searchComment = this.searchComment.bind(this);
   }
 
   onChange(event) {
@@ -36,8 +41,31 @@ class BoardAns extends Component {
       inputWriter: "",
     }));
   }
+
+  searchComment() {
+    const searchResult = this.state.comments.filter((value) => {
+      //   console.log(value);
+      //   value[this.state.searchType];
+      console.log(value[this.state.searchType]);
+      const type = value[this.state.searchType];
+      const include = type.includes(this.state.inputSearch);
+      if (!include) {
+        return false;
+      }
+      return true;
+    });
+    this.setState({ result: searchResult });
+  }
+
   render() {
-    const { inputWriter, inputTitle, comments } = this.state;
+    const {
+      inputWriter,
+      inputTitle,
+      comments,
+      inputSearch,
+      searchType,
+      result,
+    } = this.state;
 
     return (
       <>
@@ -61,6 +89,26 @@ class BoardAns extends Component {
             작성
           </button>
         </form>
+        <form>
+          {/*   onchange => input, textarea, select 값이 변경될때마다 발생하는 이벤트 핸들러 */}
+
+          <select
+            value={searchType}
+            onChange={(e) => this.setState({ searchType: e.target.value })}
+          >
+            <option value="writer">작성자</option>
+            <option value="title">제목</option>
+          </select>
+          <input
+            type="text"
+            value={inputSearch}
+            onChange={(e) => this.setState({ inputSearch: e.target.value })}
+          ></input>
+          <button type="button" onClick={this.searchComment}>
+            검색
+          </button>
+        </form>
+
         <table border={1} cellSpacing={0}>
           <thead>
             <tr>
