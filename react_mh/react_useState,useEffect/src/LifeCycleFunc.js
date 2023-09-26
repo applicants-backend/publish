@@ -16,9 +16,6 @@ function MyComponent({ number }) {
       console.log("제거 될때 실행됩니다.");
     };
   }, []);
-  useEffect(() => {
-    console.log("state가 변경될때 실행됩니다.");
-  }, [text]);
 
   return (
     <>
