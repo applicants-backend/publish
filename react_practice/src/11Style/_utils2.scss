@@ -1,0 +1,35 @@
+// _utils.scss
+// scss 파일명 앞에 _를 붙혀서 생성하면 파일단위로 분리되어 컴파일 되지 않는다.
+
+// $color-yellow : yellow;
+// $color-green : green;
+// $color-pink : pink;
+
+
+@mixin circle ($color) {
+    width: 70px ;
+    height: 70px ; 
+    background-color: $color;
+    border-radius: 50%;
+};
+
+@mixin rotate-circle($name, $size) {
+    @keyframes #{$name} {
+        0% {
+            top : 0px;
+            left : 0px;
+        }
+        25% {
+            top : 0px;
+            left: $size;
+        }
+        50% {
+            top : $size;
+            left: $size;
+        }
+        75% {
+            top: $size;
+            left: 0px;
+        }
+    }
+}

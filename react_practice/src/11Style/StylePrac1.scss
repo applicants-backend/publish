@@ -1,0 +1,54 @@
+// @import "./utils.scss";
+
+.StylePracice1 {
+    position: relative;
+
+   .box {
+    @include box(100px);
+    // width: 100px;
+    // height: 100px;
+    // border: 1px solid black;
+    border-radius: 50%;
+    
+    // & => 중첩안에서 & 연산자는 부모 선택자를 참조하여 치환해준다.
+    // .box .red 와 동일하다
+    &.location1 { @include location (0px,0px); position: absolute;}
+    &.location2 { @include location (50px,50px); position: absolute;}
+    &.location3 { @include location (80px,100px); position: absolute;}
+    &.location4 { @include location (100px,150px); position: absolute;}
+    &.location5 { @include location (100px,200px); position: absolute;}
+    &.red {background-color: $color-red;}
+    &.orange {background-color: $color-orange;}
+    &.yellow {background-color: $color-yellow;}
+    &.green {background-color: $color-green;}
+    &.blue {background-color: $color-blue;}
+    }
+
+}
+.white-eye {
+    position: absolute;
+    background-color: white;
+    width: 30px;
+    height: 30px;
+    border-radius: 50%;
+    top: 15px;
+    left: 15px;
+}
+.black-eye {
+    position: absolute;
+    background-color: black;
+    width: 15px;
+    height: 15px;
+    border-radius: 50%;
+    top: 15px;
+    left: 15px
+}
+.grassImg {
+    @include location (50px, 0px);
+    position: absolute;
+    width: 350px;
+    height: 200px;
+    z-index: 5;
+}
+
+

@@ -11,7 +11,13 @@
 // import UseStatePrac4 from "./07UseState/UseStatePrac4";
 // import UseStatePrac5 from "./07UseState/UseStatePrac5";
 
-import UseCallback from "./10Hook/UseCallback";
+import StylePrac4 from "./11Style/StylePrac4";
+
+// import StylePrac3 from "./11Style/StylePrac3";
+
+// import UseCallback from "./10Hook/UseCallback";
+// import StylePrac1 from "./11Style/StylePrac1";
+// import StylePrac2 from "./11Style/StylePrac2";
 // import UseMemo from "./10Hook/UseMemo";
 
 function App() {
@@ -40,7 +46,11 @@ function App() {
             <UseStatePrac4 />
             <UseStatePrac5 /> */}
       {/* <UseMemo></UseMemo> */}
-      <UseCallback></UseCallback>
+      {/* <UseCallback></UseCallback>*/}
+      {/* <StylePrac1></StylePrac1> */}
+      {/* <StylePrac2></StylePrac2> */}
+      {/* <StylePrac3></StylePrac3> */}
+      <StylePrac4></StylePrac4>
     </>
   );
 }
