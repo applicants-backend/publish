@@ -1,19 +1,19 @@
-import {
-  //   BrowserRouter,
-  //   Routes,
-  //   Route,
-  createBrowserRouter,
-} from "react-router-dom";
-import Header from "./Header";
-import About from "./About";
-import Home from "./Home";
-import User from "./User";
-import Redirect from "./Redirect";
-import UserDetail from "./UserDetail";
-import NotFound from "./404";
-import Root from "./Root";
-import App from "../App";
-import Comment from "./Comment";
+// import {
+//   //   BrowserRouter,
+//   //   Routes,
+//   //   Route,
+//   createBrowserRouter,
+// } from "react-router-dom";
+// import Header from "./Header";
+// import About from "./About";
+// import Home from "./Home";
+// import User from "./User";
+// import Redirect from "./Redirect";
+// import UserDetail from "./UserDetail";
+// import NotFound from "./404";
+// import Root from "./Root";
+// import App from "../App";
+// import Comment from "./Comment";
 
 // Version 1
 
@@ -36,49 +36,49 @@ import Comment from "./Comment";
 // }
 
 // Version2
-const Router = createBrowserRouter([
-  {
-    path: "/",
-    element: <App />,
-    children: [
-      {
-        path: "/",
-        element: <Home />,
-        errorElement: <NotFound />,
-      },
-      {
-        path: "about",
-        element: <About />,
-        errorElement: <NotFound />,
-      },
-      {
-        path: "redirect",
-        element: <Redirect />,
-        errorElement: <NotFound />,
-      },
-    ],
-    errorElement: <NotFound />,
-  },
-  {
-    path: "/user",
-    element: <App />,
-    children: [
-      {
-        path: "",
-        element: <User />,
-      },
-      {
-        path: ":userId",
-        element: <UserDetail />,
-        children: [
-          {
-            path: "comment",
-            element: <Comment />,
-          },
-        ],
-      },
-    ],
-  },
-]);
+// const Router = createBrowserRouter([
+//   {
+//     path: "/",
+//     element: <App />,
+//     children: [
+//       {
+//         path: "/",
+//         element: <Home />,
+//         errorElement: <NotFound />,
+//       },
+//       {
+//         path: "about",
+//         element: <About />,
+//         errorElement: <NotFound />,
+//       },
+//       {
+//         path: "redirect",
+//         element: <Redirect />,
+//         errorElement: <NotFound />,
+//       },
+//     ],
+//     errorElement: <NotFound />,
+//   },
+//   {
+//     path: "/user",
+//     element: <App />,
+//     children: [
+//       {
+//         path: "",
+//         element: <User />,
+//       },
+//       {
+//         path: ":userId",
+//         element: <UserDetail />,
+//         children: [
+//           {
+//             path: "comment",
+//             element: <Comment />,
+//           },
+//         ],
+//       },
+//     ],
+//   },
+// ]);
 
-export default Router;
+// export default Router;

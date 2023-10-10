@@ -1,4 +1,4 @@
-import { users } from "./User";
+// import { users } from "./User";
 
 export default function Comment() {
   return (

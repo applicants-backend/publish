@@ -1,6 +1,6 @@
 import { Link, Outlet, useParams } from "react-router-dom";
 import { users } from "./User";
-import Comment from "./Comment";
+// import Comment from "./Comment";
 
 export default function UserDetail() {
   // Route에 /user/:userId

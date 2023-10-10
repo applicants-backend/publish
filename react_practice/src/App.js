@@ -11,7 +11,15 @@
 // import UseStatePrac4 from "./07UseState/UseStatePrac4";
 // import UseStatePrac5 from "./07UseState/UseStatePrac5";
 
-import StylePrac4 from "./11Style/StylePrac4";
+import LanguageSelector from "./14Context/LangSelector";
+import ThemeSelector from "./14Context/ThemeSelector";
+import { SettingProvider } from "./14Context/store/setting-context";
+
+// import FormPrac1 from "./13Form/FormPrac1";
+// import ThemeProvider from "./14Context/PracContext";
+// import ThemeSelector from "./14Context/PracLangSelector";
+
+// import StylePrac4 from "./11Style/StylePrac4";
 
 // import StylePrac3 from "./11Style/StylePrac3";
 
@@ -50,7 +58,15 @@ function App() {
       {/* <StylePrac1></StylePrac1> */}
       {/* <StylePrac2></StylePrac2> */}
       {/* <StylePrac3></StylePrac3> */}
-      <StylePrac4></StylePrac4>
+      {/* <StylePrac4></StylePrac4> */}
+      {/* <FormPrac1></FormPrac1> */}
+      {/* <ThemeProvider>
+        <ThemeSelector /> */}
+      {/* </ThemeProvider> */}
+      <SettingProvider>
+        <ThemeSelector />
+        <LanguageSelector />
+      </SettingProvider>
     </>
   );
 }
