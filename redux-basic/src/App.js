@@ -5,6 +5,7 @@ import Counter from "./Counter";
 function App() {
   return (
     <>
+      <div>카운터</div>
       <Counter />
       <Login />
     </>
